@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>CryptoNovice | From Zero to Crypto Knowledgeable</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom CSS for extra effects -->
+  <style>
+    /* Custom configuration to extend Tailwind */
+    @layer utilities {
+      .bg-conic-gradient {
+        background: conic-gradient(from 0deg, #00e0ff, #7c3aed, #00e0ff);
+      }
+      .animate-glow-sweep {
+        animation: glow-sweep 3s linear infinite;
+      }
+      @keyframes glow-sweep {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+      }
+      .btn-primary {
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
+      }
+      .btn-primary:active {
+        transform: scale(0.98);
+      }
+      .btn-secondary {
+        transition: all 0.2s ease;
+      }
+      .btn-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+      }
+      .btn-secondary:active {
+        transform: scale(0.98);
+      }
+      .hover-lift {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px -5px rgba(0, 224, 255, 0.2);
+      }
+    }
+    body {
+      background: #0a0a0a;
+      background-image: radial-gradient(circle at 25% 0%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 75% 100%, rgba(0, 224, 255, 0.08) 0%, transparent 50%);
+      font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+    }
+    /* Hide scrollbar for cleaner look (optional) */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00e0ff;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glass-card rounded-none border-t-0 border-x-0 backdrop-blur-xl bg-black/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="#" class="text-2xl font-bold bg-gradient-to-r from-[#00e0ff] to-[#7c3aed] bg-clip-text text-transparent">
+          CryptoNovice
+        </a>
+        <div class="hidden md:flex space-x-8">
+          <a href="#" class="hover:text-[#00e0ff] transition">Article</a>
+          <a href="#" class="hover:text-[#00e0ff] transition">About</a>
+        </div>
+        <!-- Mobile menu button (simple for demo) -->
+        <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden hidden glass-card rounded-t-none p-4 space-y-2">
+      <a href="#" class="block py-2 hover:text-[#00e0ff]">Article</a>
+      <a href="#" class="block py-2 hover:text-[#00e0ff]">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-4 max-w-7xl mx-auto text-center">
+    <div class="animate-fade-in-up" style="animation: fadeInUp 0.6s ease-out forwards;">
+      <h1 class="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white to-[#00e0ff] bg-clip-text text-transparent leading-tight">
+        From Zero to <br />
+        Crypto Knowledgeable
+      </h1>
+      <p class="mt-6 text-xl text-gray-300 max-w-2xl mx-auto">
+        Stop guessing. Start understanding. We deliver one clear lesson at a time. No financial advice, just education.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" class="btn-primary px-6 py-3 bg-gradient-to-r from-[#00e0ff] to-[#7c3aed] text-white font-semibold rounded-full inline-block">
+          Start Learning →
+        </a>
+        <a href="#" class="btn-secondary px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full inline-block">
+          Read the Article
+        </a>
+      </div>
+      <p class="mt-6 text-sm text-gray-400">Not financial advisors. Educational content only.</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="flex justify-center gap-12 mt-16 animate-fade-in-up" style="animation-delay: 0.2s;">
+      <div class="text-center">
+        <div class="text-3xl font-bold text-[#00e0ff]">1+</div>
+        <div class="text-gray-400">Clear Article</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-[#00e0ff]">5000+</div>
+        <div class="text-gray-400">Active Learners</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You'll Gain Section -->
+  <section class="py-20 px-4 max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">What You'll Gain</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="glass-card p-6 hover-lift transition-all">
+        <div class="text-4xl mb-4">🎓</div>
+        <h3 class="text-xl font-semibold mb-2">Understand the Lingo</h3>
+        <p class="text-gray-300">Bitcoin, Ethereum, blockchain – made simple. No more feeling lost.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="glass-card p-6 hover-lift transition-all">
+        <div class="text-4xl mb-4">📡</div>
+        <h3 class="text-xl font-semibold mb-2">No Noise, Just Signal</h3>
+        <p class="text-gray-300">We filter the hype so you get clarity. Focus on what actually matters.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="glass-card p-6 hover-lift transition-all">
+        <div class="text-4xl mb-4">📚</div>
+        <h3 class="text-xl font-semibold mb-2">One Essential Read</h3>
+        <p class="text-gray-300">Bitcoin vs. Ethereum: What's the Actual Difference? Learn the fundamental differences between the two largest cryptocurrencies using simple analogies…</p>
+        <div class="mt-4 inline-block px-3 py-1 bg-[#00e0ff]/10 rounded-full text-sm text-[#00e0ff]">5 min read</div>
+        <a href="#" class="inline-block mt-4 text-[#00e0ff] hover:underline transition">Read more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter with glowing moving-light form -->
+  <section class="py-20 px-4 max-w-3xl mx-auto">
+    <div class="text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Get Weekly Crypto Insights</h2>
+      <p class="text-gray-300 mb-8">No spam. Just the signal you need to stay informed.</p>
+
+      <!-- Glowing Form Container -->
+      <div class="relative p-[2px] rounded-2xl overflow-hidden mx-auto max-w-md sm:max-w-full">
+        <!-- Animated rotating border -->
+        <div class="absolute inset-0 rounded-2xl bg-conic-gradient animate-glow-sweep opacity-70"></div>
+        
+        <form id="newsletter-form" class="relative flex flex-col sm:flex-row gap-4 bg-black/80 backdrop-blur-xl rounded-2xl p-6">
+          <input
+            type="email"
+            id="email-input"
+            placeholder="Enter your email"
+            required
+            class="flex-1 px-6 py-3 bg-white/5 border border-white/10 rounded-full focus:outline-none focus:ring-2 focus:ring-[#00e0ff]/50 text-white placeholder-gray-400"
+          />
+          <button type="submit" class="btn-primary px-6 py-3 bg-gradient-to-r from-[#00e0ff] to-[#7c3aed] text-white font-semibold rounded-full whitespace-nowrap">
+            Subscribe →
+          </button>
+        </form>
+      </div>
+      <div id="form-message" class="mt-4 text-[#00e0ff] hidden"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-12 px-4 mt-20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-xl font-bold bg-gradient-to-r from-[#00e0ff] to-[#7c3aed] bg-clip-text text-transparent">
+          CryptoNovice
+        </h3>
+        <p class="text-gray-400 mt-2">Simplifying crypto education, one article at a time.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Explore</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#" class="hover:text-[#00e0ff] transition">Article</a></li>
+          <li><a href="#" class="hover:text-[#00e0ff] transition">About Us</a></li>
+          <li><a href="#" class="hover:text-[#00e0ff] transition">Legal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Connect</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#" class="hover:text-[#00e0ff] transition">Twitter</a></li>
+          <li><a href="#" class="hover:text-[#00e0ff] transition">Discord</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Legal</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#" class="hover:text-[#00e0ff] transition">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-[#00e0ff] transition">Terms of Use</a></li>
+          <li><a href="#" class="hover:text-[#00e0ff] transition">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-8 pt-8 border-t border-white/10 text-center text-gray-400 text-sm">
+      © 2025 CryptoNovice. Not financial advisors. Always do your own research.
+    </div>
+  </footer>
+
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+  </style>
+
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Newsletter form submission (demo)
+    const form = document.getElementById('newsletter-form');
+    const emailInput = document.getElementById('email-input');
+    const messageDiv = document.getElementById('form-message');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (email) {
+        messageDiv.textContent = `Thanks! ${email} is now subscribed.`;
+        messageDiv.classList.remove('hidden');
+        emailInput.value = '';
+        setTimeout(() => {
+          messageDiv.classList.add('hidden');
+        }, 3000);
+      } else {
+        messageDiv.textContent = 'Please enter a valid email address.';
+        messageDiv.classList.remove('hidden');
+        setTimeout(() => {
+          messageDiv.classList.add('hidden');
+        }, 3000);
+      }
+    });
+  </script>
+</body>
+</html>
