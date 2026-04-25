@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CryptoNovice | From Zero to Crypto Knowledgeable</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {font-family: 'Inter','Plus Jakarta Sans',sans-serif;}
+.glass-card {background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); border-radius:1rem;}
+.article-content {max-height:0;opacity:0;overflow:hidden;transition:0.4s;}
+.article-content.open {max-height:2000px;opacity:1;}
+</style>
+</head>
+
+<body class="text-white">
+
+<!-- BACKGROUND -->
+<div class="fixed inset-0 z-[-2]">
+<img src="https://images.pexels.com/photos/6770610/pexels-photo-6770610.jpeg" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-black/60"></div>
+</div>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full bg-black/30 backdrop-blur p-4 z-50">
+<div class="flex justify-between max-w-6xl mx-auto">
+<h1 class="text-xl font-bold text-cyan-400">CryptoNovice</h1>
+<a href="#articles">Articles</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-32 text-center">
+<h1 class="text-5xl font-bold">From Zero to Crypto Knowledgeable</h1>
+<p class="text-gray-400 mt-4">One clear lesson at a time</p>
+</section>
+
+<!-- ARTICLES -->
+<section id="articles" class="max-w-3xl mx-auto mt-20 space-y-10 px-4">
+
+<!-- ARTICLE 1 -->
+<div class="glass-card p-6">
+<h2 class="text-2xl font-bold mb-4">Sleeping on ALT Coins?</h2>
+
+<div id="article1" class="article-content space-y-3 text-gray-300">
+<p>Altcoins are alternatives to Bitcoin.</p>
+<p>They offer new features like DeFi, NFTs, and smart contracts.</p>
+
+<ul class="list-disc ml-5">
+<li>Diversify your portfolio</li>
+<li>Higher risk, higher reward</li>
+<li>Rapid innovation</li>
+</ul>
+
+<p class="text-sm text-gray-500">Educational only.</p>
+</div>
+
+<button onclick="toggleArticle('article1', this)" class="mt-4 bg-cyan-500 px-4 py-2 rounded">
+Read Full Article
+</button>
+</div>
+
+<!-- ARTICLE 2 -->
+<div class="glass-card p-6">
+<h2 class="text-2xl font-bold mb-4">Bitcoin vs Ethereum</h2>
+
+<div id="article2" class="article-content space-y-3 text-gray-300">
+<p>Bitcoin and Ethereum serve different purposes.</p>
+
+<p><strong>Bitcoin</strong> is digital gold.</p>
+<p><strong>Ethereum</strong> is a platform for apps.</p>
+
+<ul class="list-disc ml-5">
+<li>Bitcoin = store of value</li>
+<li>Ethereum = smart contracts</li>
+<li>Different use cases</li>
+</ul>
+
+<p class="text-sm text-gray-500">Educational only.</p>
+</div>
+
+<button onclick="toggleArticle('article2', this)" class="mt-4 bg-cyan-500 px-4 py-2 rounded">
+Read Full Article
+</button>
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="text-center mt-20">
+<p>cryptonovicealyk@gmail.com</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center text-gray-500 mt-20 pb-10">
+© 2025 CryptoNovice
+</footer>
+
+<script>
+function toggleArticle(id, btn) {
+const el = document.getElementById(id);
+
+if (el.classList.contains('open')) {
+el.classList.remove('open');
+btn.textContent = "Read Full Article";
+} else {
+el.classList.add('open');
+btn.textContent = "Collapse Article";
+}
+}
+</script>
+
+</body>
+</html>
