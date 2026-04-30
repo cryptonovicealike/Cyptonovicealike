@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>CryptoNovice | From Zero to Crypto Knowledgeable</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom configuration to extend Tailwind */
+    @layer utilities {
+      .bg-conic-gradient {
+        background: conic-gradient(from 0deg, #00e0ff, #7c3aed, #00e0ff);
+      }
+      .animate-glow-sweep {
+        animation: glow-sweep 3s linear infinite;
+      }
+      @keyframes glow-sweep {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+      }
+      .btn-primary {
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
+      }
+      .btn-primary:active {
+        transform: scale(0.98);
+      }
+      .btn-secondary {
+        transition: all 0.2s ease;
+      }
+      .btn-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+      }
+      .btn-secondary:active {
+        transform: scale(0.98);
+      }
+      .hover-lift {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px -5px rgba(0, 224, 255, 0.2);
+      }
+    }
+    body {
+      font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00e0ff;
+      border-radius: 3px;
+    }
+    .article-content {
+      transition: max-height 0.4s ease-out, opacity 0.3s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    .article-content.open {
+      max-height: 2000px;
+      opacity: 1;
+      overflow-y: auto;
+    }
+    .altcoin-content {
+      transition: max-height 0.4s ease-out, opacity 0.3s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    .altcoin-content.open {
+      max-height: 1500px;
+      opacity: 1;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <!-- Full‑screen splash background with overlay -->
+  <div class="fixed inset-0 z-[-2]">
+    <img src="https://images.pexels.com/photos/6770610/pexels-photo-6770610.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=2"
+         class="w-full h-full object-cover"
+         alt="Crypto background">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glass-card rounded-none border-t-0 border-x-0 backdrop-blur-xl bg-black/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="#" class="text-2xl font-bold bg-gradient-to-r from-[#00e0ff] to-[#7c3aed] bg-clip-text text-transparent">
+          CryptoNovice
+        </a>
+        <div class="hidden md:flex space-x-8">
+          <a href="#bitcoin-article" class="hover:text-[#00e0ff] transition">Bitcoin Article</a>
+          <a href="#altcoin-article" class="hover:text-[#00e0ff] transition">Altcoins Article</a>
+          <a href="#about" class="hover:text-[#00e0ff] transition">About</a>
+          <a href="#disclaimer" class="hover:text-[#00e0ff] transition">Disclaimer</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden glass-card rounded-t-none p-4 space-y-2">
+      <a href="#bitcoin-article" class="block py-2 hover:text-[#00e0ff]">Bitcoin Article</a>
+      <a href="#altcoin-article" class="block py-2 hover:text-[#00e0ff]">Altcoins Article</a>
+      <a href="#about" class="block py-2 hover:text-[#00e0ff]">About</a>
+      <a href="#disclaimer" class="block py-2 hover:text-[#00e0ff]">Disclaimer</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-4 max-w-7xl mx-auto text-center">
+    <div class="animate-fade-in-up" style="animation: fadeInUp 0.6s ease-out forwards;">
+      <h1 class="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white to-[#00e0ff] bg-clip-text text-transparent leading-tight">
+        From Zero to <br />
+        Crypto Knowledgeable
+      </h1>
+      <p class="mt-6 text-xl text-gray-300 max-w-2xl mx-auto">
+        Stop guessing. Start understanding. We deliver clear lessons at a time. No financial advice, just education.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#bitcoin-article" class="btn-primary px-6 py-3 bg-gradient-to-r from-[#00e0ff] to-[#7c3aed] text-white font-semibold rounded-full inline-block">
+          Read Bitcoin Article →
+        </a>
+        <a href="#altcoin-article" class="btn-secondary px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full">
+          Read Altcoins Guide
+        </a>
+      </div>
+      <p class="mt-6 text-sm text-gray-400">Not financial advisors. Educational content only.</p>
+    </div>
+  </section>
+
+  <!-- What You'll Gain Section -->
+  <section class="py-20 px-4 max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">What You'll Gain</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="glass-card p-6 hover-lift transition-all">
+        <div class="text-4xl mb-4">📈</div>
+        <h3 class="text-xl font-semibold mb-2">Understand Bitcoin’s Value</h3>
+        <p class="text-gray-300">Why is Bitcoin called digital gold? Learn its scarcity, security, and role as a store of value.</p>
+      </div>
+      <div class="glass-card p-6 hover-lift transition-all">
+        <div class="text-4xl mb-4">🪙</div>
+        <h3 class="text-xl font-semibold mb-2">Master Altcoins</h3>
+        <p class="text-gray-300">Discover alternative cryptocurrencies, DeFi projects, and how to diversify your portfolio.</p>
+      </div>
+      <div class="glass-card p-6 hover-lift transition-all">
+        <div class="text-4xl mb-4">📚</div>
+        <h3 class="text-xl font-semibold mb-2">Two Essential Reads</h3>
+        <p class="text-gray-300">Complete guides: Bitcoin fundamentals + Altcoin strategies for smart diversification.</p>
+        <div class="mt-4 inline-block px-3 py-1 bg-[#00e0ff]/10 rounded-full text-sm text-[#00e0ff]">15 min total</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bitcoin Article Section -->
+  <section id="bitcoin-article" class="py-12 px-4 max-w-4xl mx-auto scroll-mt-20">
+    <div class="glass-card p-6 md:p-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">Why invest in Bitcoin and other cryptocurrencies</h2>
+      <div id="bitcoinArticle" class="article-content text-gray-300 space-y-4">
+        <p><strong>Bitcoin</strong> is an alternative form of money and a payment system. It is decentralized — no single company or central bank controls it. The network is maintained by people around the world who use it and verify transactions.</p>
+        <p>Bitcoin works as both a currency and a network. You can send value directly to someone else without a third party. Transactions can settle within minutes. For example, on April 12, 2020, someone transferred 161,500 BTC, worth over $1.1 billion at the time, in a single transaction. It settled in about 10 minutes with a fee of around $0.63.</p>
+
+        <h3 class="text-xl font-semibold text-[#00e0ff] mt-6 mb-2">Security and decentralization</h3>
+        <p>Bitcoin has remained secure because of its distributed network. Thousands of computers across the world verify transactions. This makes it very hard to manipulate.</p>
+        <p>To attack the network, someone would need to control most of its computing power. This is known as a 51% attack. The cost and resources required make this highly impractical.</p>
+        <p>Today, tens of thousands of nodes verify transactions independently. This decentralization is one of Bitcoin's strongest advantages.</p>
+
+        <h3 class="text-xl font-semibold text-[#00e0ff] mt-6 mb-2">Bitcoin vs fiat currency</h3>
+        <p>Traditional currencies lose value over time due to inflation. Governments can print more money, which reduces purchasing power.</p>
+        <p>Bitcoin is different. It has a fixed supply. Only 21 million coins will ever exist. New supply is introduced at a decreasing rate through an event called the halving, which happens roughly every four years.</p>
+        <p>This limited supply creates scarcity. As demand grows, the price tends to rise over time. This is why many people see Bitcoin as a store of value, similar to gold.</p>
+
+        <h3 class="text-xl font-semibold text-[#00e0ff] mt-6 mb-2">Key qualities of money</h3>
+        <p>Bitcoin meets strong qualities of money:</p>
+        <ul class="list-disc list-inside space-y-1 ml-4">
+          <li><span class="text-[#00e0ff]">Portability:</span> You can send large amounts anywhere in the world quickly.</li>
+          <li><span class="text-[#00e0ff]">Durability:</span> It exists digitally and cannot degrade.</li>
+          <li><span class="text-[#00e0ff]">Scarcity:</span> Supply is fixed and predictable.</li>
+          <li><span class="text-[#00e0ff]">Acceptability:</span> It is accepted globally, with thousands of ATMs and businesses supporting it.</li>
+          <li><span class="text-[#00e0ff]">Divisibility:</span> It can be split into very small units.</li>
+        </ul>
+
+        <h3 class="text-xl font-semibold text-[#00e0ff] mt-6 mb-2">Institutional adoption</h3>
+        <p>The cryptocurrency market has grown rapidly and has attracted both retail and institutional investors.</p>
+        <p>Major financial players have entered the space:</p>
+        <ul class="list-disc list-inside ml-4">
+          <li>Fidelity Investments offers crypto services</li>
+          <li>CME Group provides Bitcoin futures</li>
+          <li>JPMorgan Chase and BBVA have developed crypto‑related products</li>
+        </ul>
+        <p>Large institutions and universities have also allocated capital to crypto:</p>
+        <ul class="list-disc list-inside ml-4">
+          <li>Harvard University</li>
+          <li>Yale University</li>
+          <li>Stanford University</li>
+        </ul>
+        <p>Investors like Paul Tudor Jones have publicly supported Bitcoin as a hedge against inflation.</p>
+
+        <h3 class="text-xl font-semibold text-[#00e0ff] mt-6 mb-2">Regulation and market access</h3>
+        <p>Before regulation, crypto markets were less accessible to large institutions. Many companies needed legal clarity before participating.</p>
+        <p>Regulation allowed institutions to enter the market. This increased capital inflow and legitimacy.</p>
+
+        <h3 class="text-xl font-semibold text-[#00e0ff] mt-6 mb-2">Blockchain transparency</h3>
+        <p>Bitcoin runs on blockchain technology. This is a public ledger that records every transaction.</p>
+        <ul class="list-disc list-inside ml-4">
+          <li>Anyone can view transactions</li>
+          <li>No single party controls the system</li>
+          <li>Records are permanent and transparent</li>
+        </ul>
+        <p>This reduces fraud and increases trust in the system.</p>
+
+        <h3 class="text-xl font-semibold text-[#00e0ff] mt-6 mb-2">Criticism and resistance</h3>
+        <p>Some financial institutions and central banks have opposed Bitcoin. Blockchain challenges traditional systems by removing intermediaries and increasing transparency.</p>
+        <p>There have also been scams in the crypto space. These have slowed adoption and created distrust among new users.</p>
+
+        <p class="text-sm text-gray-400 mt-6">*This is educational content, not financial advice. Always do your own research before investing.</p>
+      </div>
+      <button id="toggleBitcoinBtn" class="mt-6 btn-primary px-5 py-2 text-sm bg-gradient-to-r from-[#00e0ff] to-[#7c3aed] rounded-full">Read Bitcoin Article</button>
+    </div>
+  </section>
+
+  <!-- Altcoin Article Section (Sleeping on ALT Coins?) -->
+  <section id="altcoin-article" class="py-12 px-4 max-w-4xl mx-auto scroll-mt-20">
+    <div class="glass-card p-6 md:p-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">Sleeping on ALT Coins?</h2>
+      <div id="altcoinArticle" class="altcoin-content text-gray-300 space-y-4">
+        <p>Altcoins, which stand for alternative coins, are different/alternative cryptocurrencies to Bitcoin. Bitcoin is the first ever cryptocurrency, which makes it the first-born of cryptocurrency. This means that altcoins are typically newer cryptocurrencies that operate on their own blockchain technology and have different features and functions than Bitcoin.</p>
+        
+        <p>Altcoins have outperformed leaders like Bitcoin and Ethereum in the past. Altcoins can be used for various purposes such as smart contracts, decentralized finance, and privacy-focused transactions. Many investors and traders consider buying altcoins as a way to diversify their portfolio in addition to Bitcoin.</p>
+        
+        <p>The rally of altcoins has reduced the dominance of Bitcoin, whose market capitalization is $1.2 trillion as of October 2021. It is important to note that the market cap of any cryptocurrency can fluctuate frequently due to the volatile nature of crypto prices.</p>
+        
+        <h3 class="text-xl font-semibold text-[#00e0ff] mt-6 mb-2">Tracking Altcoin Performance</h3>
+        <p>To keep up with the prices and money flow of altcoins, you can look at an index called the Money Flow Index. There, you will be able to see the volume and money flow into most altcoins. You can also check out DefiLlama as an alternative to other index platforms. DefiLlama is an all-in-one DeFi dashboard where you can find a lot of information, and they update frequently.</p>
+        
+        <p>This website allows you to see an overview of all altcoins in a particular order. You can see which altcoin gains the most profit, total value, as well as the total value locked. All you have to do is click on Altcoin/chain, then you will be able to see the projects that are being built on that altcoin.</p>
+        
+        <h3 class="text-xl font-semibold text-[#00e0ff] mt-6 mb-2">Projects Built on Altcoins</h3>
+        <p>There are many projects built on different altcoins. For example, some of the projects that have been built on the Ethereum blockchain include decentralized finance, non-fungible tokens, stablecoins, gaming, and many other projects that you can find on DefiLlama.</p>
+        
+        <div class="bg-[#00e0ff]/10 p-4 rounded-lg mt-4 border border-[#00e0ff]/30">
+          <p class="font-semibold text-[#00e0ff]">💡 Key Takeaway:</p>
+          <p>However, Bitcoin is the first-born of cryptocurrency; it is the first currency to come into the space. Don't put your eggs in one basket. With that being said, it would be wise not to sleep on altcoins. Just in case Bitcoin goes down, have something to balance your losses and diversify your portfolio.</p>
+        </div>
+        
+        <p class="text-sm text-gray-400 mt-6">*This is educational content, not financial advice. Always do your own research before investing.</p>
+      </div>
+      <button id="toggleAltcoinBtn" class="mt-6 btn-primary px-5 py-2 text-sm bg-gradient-to-r from-[#00e0ff] to-[#7c3aed] rounded-full">Read Altcoins Guide</button>
+    </div>
+  </section>
+
+  <!-- Newsletter with glowing form -->
+  <section class="py-20 px-4 max-w-3xl mx-auto">
+    <div class="text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Get Weekly Crypto Insights</h2>
+      <p class="text-gray-300 mb-8">No spam. Just the signal you need to stay informed.</p>
+      <div class="relative p-[2px] rounded-2xl overflow-hidden mx-auto max-w-md sm:max-w-full">
+        <div class="absolute inset-0 rounded-2xl bg-conic-gradient animate-glow-sweep opacity-70"></div>
+        <form id="newsletter-form" class="relative flex flex-col sm:flex-row gap-4 bg-black/80 backdrop-blur-xl rounded-2xl p-6">
+          <input type="email" id="email-input" placeholder="Enter your email" required class="flex-1 px-6 py-3 bg-white/5 border border-white/10 rounded-full focus:outline-none focus:ring-2 focus:ring-[#00e0ff]/50 text-white placeholder-gray-400">
+          <button type="submit" class="btn-primary px-6 py-3 bg-gradient-to-r from-[#00e0ff] to-[#7c3aed] text-white font-semibold rounded-full whitespace-nowrap">Subscribe →</button>
+        </form>
+      </div>
+      <div id="form-message" class="mt-4 text-[#00e0ff] hidden"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 px-4 max-w-4xl mx-auto scroll-mt-20">
+    <div class="glass-card p-6 md:p-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">About CryptoNovice</h2>
+      <div class="text-gray-300 space-y-4">
+        <p>CryptoNovice was born from a simple idea: <strong>crypto education should be clear, honest, and accessible</strong>. We cut through the hype, deliver essential lessons, and never give financial advice. Our mission is to empower beginners with the knowledge they need to understand blockchain technology, cryptocurrencies, and the digital economy.</p>
+        <p>We are not financial advisors. We are educators. Everything we publish is for informational purposes only. Always do your own research before making any financial decisions.</p>
+        <p>Our team consists of blockchain enthusiasts, tech writers, and educators who believe that knowledge is the best investment. Join thousands of learners who have started their journey with us.</p>
+        <p class="text-sm text-gray-400">📍 Based globally — serving curious minds everywhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer Section -->
+  <section id="disclaimer" class="py-16 px-4 max-w-4xl mx-auto scroll-mt-20">
+    <div class="glass-card p-6 md:p-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">Disclaimer</h2>
+      <div class="text-gray-300 space-y-4">
+        <p><strong>Not Financial Advice</strong><br>The content provided by CryptoNovice is for educational and informational purposes only. It does not constitute financial, investment, or legal advice. Cryptocurrency markets are highly volatile and risky. You should consult with a qualified professional before making any investment decisions.</p>
+        <p><strong>No Guarantees</strong><br>We do not guarantee the accuracy, completeness, or timeliness of any information on this website. Any reliance you place on such information is strictly at your own risk.</p>
+        <p><strong>Affiliate Disclosure</strong><br>Some links on this site may be affiliate links, meaning we may earn a commission if you click through and make a purchase, at no extra cost to you. This helps support our educational content.</p>
+        <p><strong>Always Do Your Own Research (DYOR)</strong><br>Never invest more than you can afford to lose. Past performance does not guarantee future results.</p>
+        <p class="text-sm text-gray-400">By using this website, you agree to these terms. If you do not agree, please do not use our content.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-12 px-4 mt-12">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-xl font-bold bg-gradient-to-r from-[#00e0ff] to-[#7c3aed] bg-clip-text text-transparent">CryptoNovice</h3>
+        <p class="text-gray-400 mt-2">Simplifying crypto education, one article at a time.</p>
+        <div class="mt-4 space-y-1 text-gray-400">
+          <p>✉️ <a href="mailto:cryptonovicealyk@gmail.com" class="hover:text-[#00e0ff]">cryptonovicealyk@gmail.com</a></p>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Explore</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#bitcoin-article" class="hover:text-[#00e0ff] transition">Bitcoin Article</a></li>
+          <li><a href="#altcoin-article" class="hover:text-[#00e0ff] transition">Altcoins Article</a></li>
+          <li><a href="#about" class="hover:text-[#00e0ff] transition">About Us</a></li>
+          <li><a href="#disclaimer" class="hover:text-[#00e0ff] transition">Disclaimer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Connect</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#" class="hover:text-[#00e0ff] transition">Twitter</a></li>
+          <li><a href="#" class="hover:text-[#00e0ff] transition">Discord</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Legal</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#" class="hover:text-[#00e0ff] transition">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-[#00e0ff] transition">Terms of Use</a></li>
+          <li><a href="#disclaimer" class="hover:text-[#00e0ff] transition">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-8 pt-8 border-t border-white/10 text-center text-gray-400 text-sm">
+      © 2025 CryptoNovice. Not financial advisors. Always do your own research.
+    </div>
+  </footer>
+
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+  </style>
+
+  <script>
+    // Mobile menu
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    }
+
+    // Bitcoin Article toggle
+    const bitcoinArticle = document.getElementById('bitcoinArticle');
+    const toggleBitcoinBtn = document.getElementById('toggleBitcoinBtn');
+
+    function openBitcoinArticle() {
+      bitcoinArticle.classList.add('open');
+      toggleBitcoinBtn.textContent = 'Collapse Bitcoin Article';
+    }
+
+    function closeBitcoinArticle() {
+      bitcoinArticle.classList.remove('open');
+      toggleBitcoinBtn.textContent = 'Read Bitcoin Article';
+    }
+
+    function toggleBitcoinArticle() {
+      if (bitcoinArticle.classList.contains('open')) {
+        closeBitcoinArticle();
+      } else {
+        openBitcoinArticle();
+      }
+    }
+
+    toggleBitcoinBtn.addEventListener('click', toggleBitcoinArticle);
+
+    // Altcoin Article toggle
+    const altcoinArticle = document.getElementById('altcoinArticle');
+    const toggleAltcoinBtn = document.getElementById('toggleAltcoinBtn');
+
+    function openAltcoinArticle() {
+      altcoinArticle.classList.add('open');
+      toggleAltcoinBtn.textContent = 'Collapse Altcoins Guide';
+    }
+
+    function closeAltcoinArticle() {
+      altcoinArticle.classList.remove('open');
+      toggleAltcoinBtn.textContent = 'Read Altcoins Guide';
+    }
+
+    function toggleAltcoinArticle() {
+      if (altcoinArticle.classList.contains('open')) {
+        closeAltcoinArticle();
+      } else {
+        openAltcoinArticle();
+      }
+    }
+
+    toggleAltcoinBtn.addEventListener('click', toggleAltcoinArticle);
+
+    // Newsletter form
+    const form = document.getElementById('newsletter-form');
+    const emailInput = document.getElementById('email-input');
+    const messageDiv = document.getElementById('form-message');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (email) {
+        messageDiv.textContent = `Thanks! ${email} is now subscribed.`;
+        messageDiv.classList.remove('hidden');
+        emailInput.value = '';
+        setTimeout(() => messageDiv.classList.add('hidden'), 3000);
+      } else {
+        messageDiv.textContent = 'Please enter a valid email address.';
+        messageDiv.classList.remove('hidden');
+        setTimeout(() => messageDiv.classList.add('hidden'), 3000);
+      }
+    });
+  </script>
+</body>
+</html>
